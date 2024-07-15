@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Toll Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>GPS Toll Simulation</h1>
+        
+        <form id="tollForm">
+            <label for="vehicleType">Vehicle Type:</label>
+            <select id="vehicleType" name="vehicleType">
+                <option value="car">Car</option>
+                <option value="truck">Truck</option>
+                <option value="bike">Bike</option>
+            </select>
+            
+            <label for="distance">Distance (miles):</label>
+            <input type="number" id="distance" name="distance" step="0.1" required>
+            
+            <button type="submit">Calculate Toll</button>
+        </form>
+        
+        <div id="result" class="hidden">
+            <h2>Toll Amount:</h2>
+            <p id="tollAmount"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('tollForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/calculate_toll', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(Object.fromEntries(formData)),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').classList.remove('hidden');
+                document.getElementById('tollAmount').textContent = `$ ${data.toll.toFixed(2)}`;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

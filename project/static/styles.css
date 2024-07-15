@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../static/mb.jpg'); /* Adjust the path relative to your CSS file */
+    background-color: #0f0f0f;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #0e0d0d;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom:5px;
+    font-size: x-large;
+    font-weight: 700;
+    color: rgb(15, 15, 15);
+}
+
+input, select, button{
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #0909f1;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: #3308f7;
+   
+}
+
+#result {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+p{
+    font-size: larger;
+}
+
+
